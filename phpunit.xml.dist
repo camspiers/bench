@@ -10,7 +10,7 @@
     processIsolation="false"
     stopOnFailure="false"
     syntaxCheck="false"
-    bootstrap="tests/bootstrap.php">
+    bootstrap="src/functions.php">
     <testsuites>
         <testsuite name="bench">
             <directory>./tests</directory>
