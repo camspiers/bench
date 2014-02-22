@@ -33,7 +33,7 @@ echo sprintf('%01.2f secs', bench\collector()), PHP_EOL;
 
 When `bench\collector` is invoked without arguments it will return all results collected.
 
-When there is only one result it will return that else it will return and array.
+When there is only one result it will return that else it will return an array.
 
 ```php
 bench\invoke('calculateSomething');
