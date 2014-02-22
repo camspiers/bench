@@ -9,14 +9,14 @@ Basic benchmarking
 ```php
 bench\mark('somekey');
 $result = calculateSomething();
-echo sprintf('%01.2f secs', bench\mark('somekey')), PHP_EOL;
+echo bench\format(bench\collector()), PHP_EOL;
 ```
 
 ### Using `bench\invoke`
 
 ```php
 $result = bench\invoke('calculateSomething');
-echo sprintf('%01.2f secs', bench\collector()), PHP_EOL;
+echo bench\format(bench\collector()), PHP_EOL;
 ```
 
 ### Using `bench\wrap`
@@ -24,7 +24,7 @@ echo sprintf('%01.2f secs', bench\collector()), PHP_EOL;
 ```php
 $fn = bench\wrap('calculateSomething');
 $fn();
-echo sprintf('%01.2f secs', bench\collector()), PHP_EOL;
+echo bench\format(bench\collector()), PHP_EOL;
 ```
 
 ### Using `bench\collector`
@@ -38,9 +38,7 @@ When there is only one result it will return that else it will return an array.
 ```php
 bench\invoke('calculateSomething');
 bench\invoke('calculateSomething');
-var_dump(bench\collector());
-// array(2) {
-//   0 => double(1.0011260509491)
-//   1 => double(1.0007309913635)
-// }
+foreach (bench\formatTimes(bench\collector()) as $time) {
+	echo $time, PHP_EOL;
+}
 ```

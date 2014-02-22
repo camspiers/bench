@@ -65,3 +65,20 @@ function invoke(callable $fn, $args = [], callable $collector = null) {
     call_user_func($collector ?: __NAMESPACE__.'\\collector', mark($key));
     return $result;
 }
+
+/**
+ * @param float $time
+ * @param int $dp
+ * @return string
+ */
+function format($time, $dp = 2) {
+    return sprintf("%01.{$dp}fs", $time);
+}
+
+/**
+ * @param array $times
+ * @return array
+ */
+function formatTimes(array $times) {
+    return array_map('bench\\format', $times);
+}

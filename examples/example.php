@@ -10,7 +10,6 @@ function calculate() {
 bench\invoke('calculate');
 bench\invoke('calculate');
 
-list($first, $second) = bench\collector();
-
-echo sprintf('%01.2f secs', $first), PHP_EOL;
-echo sprintf('%01.2f secs', $second), PHP_EOL;
+foreach (bench\formatTimes(bench\collector()) as $time) {
+    echo $time, PHP_EOL;
+}
