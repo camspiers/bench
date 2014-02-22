@@ -33,7 +33,7 @@ class BenchTest extends \PHPUnit_Framework_TestCase
      */
     public function testMark($time)
     {
-        mark($key = uniqid(microtime(true)));
+        mark($key = uniqid());
         
         sleep($time);
         
