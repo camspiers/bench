@@ -61,7 +61,7 @@ function wrap(callable $fn, $args = [], callable $collector = null) {
  */
 function invoke(callable $fn, $args = [], callable $collector = null) {
     mark($key = uniqid());
-    $result = call_user_func_array($fn, $args);
+    $result = $fn(...$args);
     call_user_func($collector ?: __NAMESPACE__.'\\collector', mark($key));
     return $result;
 }
