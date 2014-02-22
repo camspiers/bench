@@ -40,7 +40,7 @@ bench\invoke('calculateSomething');
 bench\invoke('calculateSomething');
 var_dump(bench\collector());
 // array(2) {
-//   '5307fd2fc1e01' => double(1.0011260509491)
-//   '5307fd30c22b1' => double(1.0007309913635)
+//   0 => double(1.0011260509491)
+//   1 => double(1.0007309913635)
 // }
 ```
