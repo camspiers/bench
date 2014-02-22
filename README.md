@@ -23,7 +23,7 @@ echo bench\format(bench\collector()), PHP_EOL;
 
 ```php
 $fn = bench\wrap('calculateSomething');
-$fn();
+$result = $fn();
 echo bench\format(bench\collector()), PHP_EOL;
 ```
 
