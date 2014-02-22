@@ -4,22 +4,23 @@ namespace bench;
 
 /**
  * This is a basic implementation of a collector
- * 
+ *
  * The collector stores times when a time is given
  * and when a time is not given it clears the current times
  * and then return the times so far collected
- * 
+ *
+ * @param string|void $key
  * @param float|void $time
  * @return array
  */
-function collector($time = null) {
+function collector($key = null, $time = null) {
     static $times = [];
     if ($time === null) {
         $return = $times;
-        $times = [];
-        return $return;
+        $times = []; // reset times
+        return count($return) === 1 ? current($return) : $return;
     } else {
-        $times[] = $time;
+        $times[$key] = $time;
     }
 }
 
@@ -62,6 +63,6 @@ function wrap(callable $fn, $args = [], callable $collector = null) {
 function invoke(callable $fn, $args = [], callable $collector = null) {
     mark($key = uniqid());
     $result = call_user_func_array($fn, $args);
-    call_user_func($collector ?: __NAMESPACE__.'\\collector', mark($key));
+    call_user_func($collector ?: __NAMESPACE__.'\\collector', $key, mark($key));
     return $result;
 }
